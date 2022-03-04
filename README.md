@@ -6,7 +6,8 @@ server-side code (REST API and database).
 Using parcel for the build process.
 
 User Stories
-● As a user, I want to be able to access information on movies, directors, and genres so
+
+- As a user, I want to be able to access information on movies, directors, and genres so
 that I can learn more about movies I’ve watched or am interested in.
-● As a user, I want to be able to create a profile so I can save data about my favorite
+-  As a user, I want to be able to create a profile so I can save data about my favorite
 movies.
