@@ -13,17 +13,24 @@ export function LoginView(props) {
     props.onLoggedIn(username);
   }
 
+  const handleSignup = (e) => {
+    console.log('Route to Reistration view.');
+  }
+
   return (
     <form>
+      <h1>MyFlix</h1>
+      <p>Welcome back, please login to your account.</p>
       <label>
         Username:
         <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-      </label>
+      </label><br></br>
       <label>
         Password:
         <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-      </label>
-      <button type="submit" onClick={handleSubmit}>Submit</button>
+      </label><br></br>
+      <button type="submit" onClick={handleSubmit}>Login</button><br></br>
+      <button type="button" onClick={handleSignup}>Create account</button>
     </form>
   );
 }
