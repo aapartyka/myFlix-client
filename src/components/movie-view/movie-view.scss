@@ -1,0 +1,55 @@
+$backgroundColor: #020402;
+$textColor: #deb992;
+$textMainColor: #b4d0e7;
+
+:root {
+  --fontsize-movie-title: 28px;
+  --fontweight-movie-title: 600;
+  --fontsize-movie-description: 18px;
+  --fontweight-movie-description: 400;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+
+#movie-view {
+  border-color: $textMainColor;
+  border-width: 10px;
+  min-height: 500px;
+}
+
+#movie-view-image {
+  margin-bottom: 20px;
+}
+
+#movie-title {
+  text-align: center;
+  font-size: var(--fontsize-movie-title);
+  font-weight: var(--fontweight-movie-title);
+}
+
+#movie-description {
+  font-size: var(--fontsize-movie-description);
+  font-weight: var(--fontweight-movie-description);
+}
+
+#movie-director {
+  font-size: var(--fontsize-movie-description);
+  font-weight: var(--fontweight-movie-description);
+}
+
+#movie-genre {
+  font-size: var(--fontsize-movie-description);
+  font-weight: var(--fontweight-movie-description);
+}
+
+#movie-view-button {
+  margin-top: 20px;
+  margin-bottom: 100px;
+  margin-right: 20px;
+  color: $textMainColor;
+  background-color: $backgroundColor;
+  border: none;
+}
