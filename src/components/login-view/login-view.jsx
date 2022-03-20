@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import FormRange from 'react-bootstrap/esm/FormRange';
 
 export function LoginView(props) {
 
@@ -18,19 +21,18 @@ export function LoginView(props) {
   }
 
   return (
-    <form>
-      <h1>MyFlix</h1>
-      <p>Welcome back, please login to your account.</p>
-      <label>
-        Username:
-        <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-      </label><br></br>
-      <label>
-        Password:
-        <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-      </label><br></br>
-      <button type="submit" onClick={handleSubmit}>Login</button><br></br>
-      <button type="button" onClick={handleSignup}>Create account</button>
-    </form>
+    <Form>
+      <Form.Group controlId="formUsername">
+        <Form.Label>Username:</Form.Label>
+        <Form.Control type="text" onChange={e => setUsername(e.target.value)}></Form.Control>
+      </Form.Group>
+
+    <Form.Group controlId="formPassword">
+      <Form.Label>Password:</Form.Label>
+      <Form.Control type="password" onChange={e => setPassword(e.target.value)}></Form.Control>
+      <Button variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
+      <Button variant="secondary" type="link" onClick={handleSignup}>Sign Up</Button>
+    </Form.Group>
+    </Form>
   );
 }
