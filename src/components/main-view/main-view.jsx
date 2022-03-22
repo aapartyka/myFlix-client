@@ -22,15 +22,13 @@ class MainView extends React.Component {
 
   componentDidMount(){
     //Get movies/database from api.
-    axios.get('http://localhost:8080/movies')
-    .then(response => {
+    let accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
       this.setState({
-        movies: response.data
+        user: localStorage.getItem('user')
       });
-    })
-    .catch(error => { 
-      console.log(error);
-    });
+      this.getMovies(accessToken);
+    }
   }
 
   /*When a movie is clicked, this function is invoked and updates the state of the `selectedMovie` property to that movie.*/
@@ -41,9 +39,37 @@ class MainView extends React.Component {
 
   /* When a user successfully logs in, this function updates the `user` property in state to that *particular user.*/
 
-  onLoggedIn(user) {
+  onLoggedIn(authData) {
+    console.log(authData);
     this.setState({
-      user
+      user: authData.user.Username
+    });
+  
+    localStorage.setItem('token', authData.token);
+    localStorage.setItem('user', authData.user.Username);
+    this.getMovies(authData.token);
+  }
+
+  onLoggedOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.setState({
+      user: null
+    });
+  }
+
+  getMovies(token) {
+    axios.get(' https://myflixandchill.herokuapp.com/movies', {
+      headers: { Authorization: `Bearer ${token}`}
+    })
+    .then(response => {
+      // Assign the result to the state
+      this.setState({
+        movies: response.data
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
     });
   }
   
