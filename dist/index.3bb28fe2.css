@@ -1,3 +1,9 @@
+* {
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  background-color: #020402;
+  color: #b4d0e7;
+}
 :root {
   --fontsize-card-title: 20px;
   --fontsize-card-text: 15px;
@@ -96,4 +102,4 @@
 .my-flix {
   color: steelblue;
 }
-/*# sourceMappingURL=index.e3f97e84.css.map */
+/*# sourceMappingURL=index.3bb28fe2.css.map */
