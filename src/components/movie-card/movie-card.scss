@@ -1,6 +1,6 @@
-$backgroundColor: #020402;
-$textColor: #deb992;
-$textMainColor: #b4d0e7;
+$backgroundColor: #121212;
+$textColor: #ffffff;
+$textMainColor: #bb86fc;
 
 :root {
   --fontsize-card-title: 20px;
@@ -14,8 +14,6 @@ $textMainColor: #b4d0e7;
 * {
   box-sizing: border-box;
   font-family: 'Lato', sans-serif;
-  background-color: $backgroundColor;
-  color: $textColor;
 }
 
 #card-button {
@@ -28,21 +26,28 @@ $textMainColor: #b4d0e7;
   min-height: 500px;
   margin-bottom: 50px;
   border-color: $textColor;
-  border-width: 5px;
+  border-width: 2px;
 }
 
 #card-title {
   font-size: var(--fontsize-card-title);
   font-weight: var(--fontweight-card-title);
+  background-color: $backgroundColor;
 }
 
 #card-text {
   font-size: var(--fontsize-card-text);
   font-weight: var(--fontweight-card-text);
   color: $textMainColor;
+  background-color: $backgroundColor;
 }
 
 #card-button {
   font-size: var(--fontsize-card-button);
   font-weight: var(--fontweight-card-button);
+  background-color: $backgroundColor;
+}
+
+.card-body {
+  background-color: $backgroundColor;
 }
