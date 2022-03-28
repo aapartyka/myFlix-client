@@ -1,41 +1,40 @@
-import React from 'react';
-import axios from 'axios';
-import PropTypes from 'prop-types';
-import './director-view.scss';
-import { Link } from 'react-router-dom';
-import {Container, Card, Button, Row} from 'react-bootstrap';
+import React from "react";
+
+import "./director-view.scss";
+
+import { Container, Row, Col, Card, Button, CardGroup } from "react-bootstrap";
+import { Link } from "react-router-dom"
 
 export class DirectorView extends React.Component {
 
+
     render() {
-        const { director, onBackClick, movies } = this.props;
+        const { director, movies, onBackClick } = this.props;
 
         return (
-            <Container fluid>
-                <Card>
-                    <Card.Body>
-                        <Card.Title>Director</Card.Title>
-                        <Card.Text>
-                            <span className="label">Name: </span>
-                            <span className="value">{director.Name}</span>
-                        </Card.Text>
-                        <Card.Text>
-                            <span className="label">Bio: </span>
-                            <span className="value">{director.Bio}</span>
-                        </Card.Text>
-                        <Card.Text>
-                            <span className="label">Birth: </span>
-                            <span className="value">{director.Birth}</span>
-                        </Card.Text>
-                        <Card.Text>
-                            <span className="label">Death: </span>
-                            <span className="value">{director.Death}</span>
-                        </Card.Text>
-
-                        <Button variant="outline-light" onClick={() => { onBackClick(); }}>Back</Button>
-                    </Card.Body>
-                </Card>
+            <Container>
                 <Row>
+                    <Col>
+                        <Card id="director-view">
+                            <Card.Body>
+                            <Card.Title>{director.Name}</Card.Title>
+                            <Card.Text>
+                                Bio: {director.Bio}
+                            </Card.Text>
+                            <Card.Text>
+                                Birthday: {director.Birth}
+                            </Card.Text>
+                            <Card.Text>
+                                Death: {director.Death}
+                            </Card.Text>
+                            <Button id="director-back-button" onClick={() => {onBackClick();}}>Back</Button>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md={12}>
+                        <CardGroup>
                     {movies.map(movie => (
                         <Card className="favorite-movie card-content" key={movie._id} >
                             <Card.Img
@@ -46,9 +45,14 @@ export class DirectorView extends React.Component {
                                 <Card.Title className="movie_title">
                                     {movie.Title}
                                 </Card.Title>
+                                <Link to={`/movies/${movie._id}`}>
+                                <Button id="card-button" variant="link">Read more</Button>
+                            </Link>
                             </Card.Body>
                         </Card>
                     ))}
+                    </CardGroup>
+                    </Col>
                 </Row>
             </Container>
         );

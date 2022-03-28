@@ -1,33 +1,34 @@
-import React from 'react';
-import axios from 'axios';
-import PropTypes from 'prop-types';
-import './genre-view.scss';
-import { Link } from 'react-router-dom';
-import {Container, Card, Button, Row} from 'react-bootstrap';
+import React from "react";
+
+import "./genre-view.scss";
+
+import { Container, Row, Col, Card, Button, CardGroup } from "react-bootstrap";
+import { Link } from "react-router-dom"
 
 export class GenreView extends React.Component {
 
+
     render() {
-        const { genre, onBackClick, movies } = this.props;
+        const { genre, movies, onBackClick } = this.props;
 
         return (
-            <Container fluid>
-                <Card>
-                    <Card.Body>
-                        <Card.Title>Genre</Card.Title>
-                        <Card.Text>
-                            <span className="label">Name: </span>
-                            <span className="value">{genre.Name}</span>
-                        </Card.Text>
-                        <Card.Text>
-                            <span className="label">Description: </span>
-                            <span className="value">{genre.Description}</span>
-                        </Card.Text>
-
-                        <Button variant="outline-light" onClick={() => { onBackClick(); }}>Back</Button>
-                    </Card.Body>
-                </Card>
+            <Container>
                 <Row>
+                    <Col>
+                        <Card id="director-view">
+                            <Card.Body>
+                            <Card.Title>{genre.Name}</Card.Title>
+                            <Card.Text>
+                                Bio: {genre.Description}
+                            </Card.Text>
+                            <Button id="genre-back-button" onClick={() => {onBackClick();}}>Back</Button>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md={30}>
+                    <CardGroup>
                     {movies.map(movie => (
                         <Card className="favorite-movie card-content" key={movie._id} >
                             <Card.Img
@@ -38,18 +39,16 @@ export class GenreView extends React.Component {
                                 <Card.Title className="movie_title">
                                     {movie.Title}
                                 </Card.Title>
+                                <Link to={`/movies/${movie._id}`}>
+                                <Button id="card-button" variant="link">Show more</Button>
+                            </Link>
                             </Card.Body>
                         </Card>
                     ))}
+                    </CardGroup>
+                    </Col>
                 </Row>
             </Container>
         );
     }
 }
-
-GenreView.proptypes = {
-    genre: PropTypes.shape({
-        Name: PropTypes.string.isRequired,
-        Description: PropTypes.string.isRequired,
-    }).isRequired,
-};
