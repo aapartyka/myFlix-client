@@ -222,8 +222,8 @@ export class ProfileView extends React.Component {
                                         />
                                     </FormGroup>
                                     <div>
-                                        <Button variant="success" type="submit" onClick={this.editUser}>Update Data</Button>
-                                        <Button variant="secondary" onClick={() => this.onDeleteUser()}>Delete Profile</Button>
+                                        <Button id="update-user" variant="success" type="submit" onClick={this.editUser}>Update Data</Button>
+                                        <Button id="delete-user" variant="danger" onClick={() => this.onDeleteUser()}>Delete Profile</Button>
                                     </div>
                                 </Form>
                         </Card.Body>
