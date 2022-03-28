@@ -1,0 +1,49 @@
+$backgroundColor: #121212;
+$textColor: #ffffff;
+$textMainColor: #bb86fc;
+
+:root {
+  --fontsize-navbar-brand: 30px;
+  --fontsize-navbar-link: 20px;
+  --fontweight-navbar-brand: 900;
+  --fontweight-navbar-link: 600;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+  background-color: $backgroundColor;
+  color: $textColor;
+}
+
+#navbar {
+  background-color: $textMainColor;
+  margin-bottom: 10px;
+  border: 5px;
+  border-color: $textColor;
+}
+
+#navbar-container {
+  background-color: $backgroundColor;
+  margin: 0;
+  padding-top: 90px;
+}
+
+#navbar-brand {
+  background-color: $textMainColor;
+  color: $textColor;
+  font-size: 30px;
+  font-weight: 900;
+  margin-left: 20px;
+}
+
+#nav {
+  background-color: $textMainColor;
+}
+
+#nav-link {
+  background-color: $textMainColor;
+  color: $textColor;
+  font-size: 20px;
+  font-weight: 600;
+}
