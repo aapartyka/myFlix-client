@@ -41,7 +41,7 @@ export class DirectorView extends React.Component {
                                 className="fav-poster"
                                 variant="top"
                                 src={movie.ImagePath} />
-                            <Card.Body style={{ backgroundColor: "black" }}>
+                            <Card.Body>
                                 <Card.Title className="movie_title">
                                     {movie.Title}
                                 </Card.Title>
