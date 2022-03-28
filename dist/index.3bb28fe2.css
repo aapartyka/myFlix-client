@@ -4,6 +4,12 @@
   background-color: #020402;
   color: #b4d0e7;
 }
+* {
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  background-color: #020402;
+  color: #deb992;
+}
 :root {
   --fontsize-card-title: 20px;
   --fontsize-card-text: 15px;
@@ -99,6 +105,16 @@
   background-color: #020402;
   border: none;
 }
+
+
+
+* {
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  background-color: #020402;
+  color: #deb992;
+}
+
 .my-flix {
   color: steelblue;
 }
