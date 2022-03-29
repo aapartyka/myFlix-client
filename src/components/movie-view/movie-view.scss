@@ -1,6 +1,6 @@
-$backgroundColor: #020402;
-$textColor: #deb992;
-$textMainColor: #b4d0e7;
+$backgroundColor: #121212;
+$textColor: #ffffff;
+$textMainColor: #bb86fc;
 
 :root {
   --fontsize-movie-title: 28px;
@@ -15,8 +15,8 @@ $textMainColor: #b4d0e7;
 }
 
 #movie-view {
-  border-color: $textMainColor;
-  border-width: 10px;
+  border-color: $textColor;
+  border-width: 5px;
   min-height: 500px;
 }
 
@@ -51,5 +51,22 @@ $textMainColor: #b4d0e7;
   margin-right: 20px;
   color: $textMainColor;
   background-color: $backgroundColor;
-  border: none;
+  border-width: 1px;
+  border-color: $textMainColor;
+}
+
+#movie-director {
+  margin-top: 20px;
+  margin-bottom: 100px;
+  margin-right: 20px;
+  border-width: 1px;
+  border-color: $textMainColor;
+}
+
+#movie-genre {
+  margin-top: 20px;
+  margin-bottom: 100px;
+  margin-right: 20px;
+  border-width: 1px;
+  border-color: $textMainColor;
 }

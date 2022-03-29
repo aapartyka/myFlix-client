@@ -1,0 +1,26 @@
+$backgroundColor: #121212;
+$textColor: #ffffff;
+$textMainColor: #bb86fc;
+
+:root {
+  --fontsize-movie-title: 28px;
+  --fontweight-movie-title: 600;
+  --fontsize-movie-description: 18px;
+  --fontweight-movie-description: 400;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+
+#update-user {
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+#delete-user {
+  margin-top: 20px;
+
+  margin-right: 20px;
+}

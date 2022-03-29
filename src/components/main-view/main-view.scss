@@ -1,9 +1,25 @@
-$backgroundColor: #020402;
-$textColor: #deb992;
+$backgroundColor: #121212;
+$textColor: #ffffff;
+$textMainColor: #bb86fc;
+
+:root {
+  --fontsize-button-text: 15px;
+  --fontweight-button-text: 400;
+}
 
 * {
   box-sizing: border-box;
   font-family: 'Lato', sans-serif;
-  background-color: $backgroundColor;
   color: $textColor;
+}
+
+#logout-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: $textColor;
+  background-color: #424242;
+  border: none;
+  font-size: var(--fontsize-button-text);
+  font-weight: var(--fontweight-button-text);
 }
