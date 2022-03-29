@@ -1,12 +1,53 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./movie-view.scss"
+import "./movie-view.scss";
+import axios from "axios";
 
 import { Card, Col, Container, Row, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export class MovieView extends React.Component {
 
+
+
+  addFavoriteMovie(e, movie) {
+    e.preventDefault();
+    const username = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
+
+    axios.post(`https://myflixandchill.herokuapp.com/users/${username}/${movie._id}`, {},
+      {
+        headers: { Authorization: `Bearer ${token}` }
+      }
+    )
+    .then((response) => {
+      console.log(response);
+      alert(`${movie.Title} has been added to your favourite movies.`);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
+  addMovieToWatchlist(e, movie) {
+    e.preventDefault();
+    const username = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
+
+    axios.post(`https://myflixandchill.herokuapp.com/users/${username}/watchlist/${movie._id}`, {},
+      {
+        headers: { Authorization: `Bearer ${token}` }
+      }
+    )
+    .then((response) => {
+      console.log(response);
+      alert(`${movie.Title} has been added to your watchlist.`);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+  
 
     render() {
         const { movie, onBackClick } = this.props;
@@ -33,8 +74,8 @@ export class MovieView extends React.Component {
                             </Card.Body>
                         </Card>
                         <Button id="movie-view-button" onClick={() => { onBackClick(); }}>Back</Button>
-                        <Button id="movie-view-button" onClick={() => {}}>Add to favorites</Button>
-                        <Button id="movie-view-button" onClick={() => {}}>Add to watchlist</Button>
+                        <Button id="movie-view-button" onClick={(e) => { this.addFavoriteMovie(e, movie) }}>Add to favorites</Button>
+                        <Button id="movie-view-button" onClick={(e) => { this.addMovieToWatchlist(e, movie)}}>Add to watchlist</Button>
                     </Col>
                 </Row>
             </Container>
