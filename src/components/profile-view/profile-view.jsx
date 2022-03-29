@@ -34,9 +34,9 @@ export class ProfileView extends React.Component {
     }
 
     getUser(token) {
-        const Username = localStorage.getItem('user');
+        const username = localStorage.getItem('user');
 
-        axios.get(`https://myflixandchill.herokuapp.com/users/${Username}`, {
+        axios.get(`https://myflixandchill.herokuapp.com/users/${username}`, {
             headers: { Authorization:`Bearer ${token}`}
         })
         .then(response => {
@@ -56,10 +56,10 @@ export class ProfileView extends React.Component {
 
     editUser = (e) => {
         e.preventDefault();
-        const Username = localStorage.getItem('user');
+        const username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
 
-        axios.put(`https://myflixandchill.herokuapp.com/users/${Username}`, 
+        axios.put(`https://myflixandchill.herokuapp.com/users/${username}`, 
             {
                 Username: this.state.Username,
                 Password: this.state.Password,
@@ -86,12 +86,12 @@ export class ProfileView extends React.Component {
 
     //Todo: Implement Watchlist and posibility to remove movies from watchlist.
 
-    onRemoveFavorite = (e, movies) => {
+    onRemoveFavorite = (e, movie) => {
         e.preventDefault();
-        const Username = localStorage.getItem('user');
+        const username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
 
-        axios.delete(`https://myflixandchill.herokuapp.com/users/${Username}/movies/${movie._id}`,
+        axios.delete(`https://myflixandchill.herokuapp.com/users/${username}/${movie._id}`,
             {
                 headers: { Authorization: `Bearer ${token}` }
             }
