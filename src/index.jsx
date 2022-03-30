@@ -8,7 +8,6 @@ import { moviesApp } from './reducers/reducers';
 //importing redux development tools.
 import { devToolsEnhancer } from 'redux-devtools-extension';
 
-
 // Import statement to indicate that you need to bundle `./index.scss`
 import "./index.scss";
 
@@ -18,11 +17,11 @@ const store = createStore(moviesApp, devToolsEnhancer);
 class MyFlixApplication extends React.Component {
   render() {
     return(
-      <Provider store={store}>
+
         <Container>
           <MainView />
         </Container>
-      </Provider>
+
     );
   }
 }
