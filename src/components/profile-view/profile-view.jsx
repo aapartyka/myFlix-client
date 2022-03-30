@@ -7,52 +7,52 @@ import { Container, Card, Button, Row, Col, Form, FormGroup, FormControl } from 
 import axios from "axios";
 
 export class ProfileView extends React.Component {
-    constructor() {
-        super();
+  constructor() {
+    super();
+    this.state = {
+        Username: null,
+        Password: null,
+        Email: null,
+        Birthday: null,
+        FavoriteMovies: [],
+        Watchlist: []
+    };
+  }
 
-        this.state = {
-            Username: null,
-            Password: null,
-            Email: null,
-            Birthday: null,
-            FavoriteMovies: []
-        };
-    }
+  componentDidMount() {
+      const accessToken = localStorage.getItem('token');
+      this.getUser(accessToken);
+  }
 
-    componentDidMount() {
-        const accessToken = localStorage.getItem('token');
-        this.getUser(accessToken);
-    }
+   onLoggedOut() {
+       localStorage.removeItem('token');
+       localStorage.removeItem('user');
+       this.setState({
+           user: null
+       });
+       window.open('/', '_self');
+   }
 
-    onLoggedOut() {
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
+  getUser(token) {
+    const username = localStorage.getItem('user');
+
+    axios.get(`https://myflixandchill.herokuapp.com/users/${username}`, {
+        headers: { Authorization:`Bearer ${token}`}
+    })
+    .then(response => {
         this.setState({
-            user: null
+            Username: response.data.Username,
+            Password: response.data.Password,
+            Email: response.data.Email,
+            Birthday: response.data.Birthday,
+            FavoriteMovies: response.data.FavoriteMovies,
+            Watchlist: response.data.Watchlist
         });
-        window.open('/', '_self');
-    }
-
-    getUser(token) {
-        const username = localStorage.getItem('user');
-
-        axios.get(`https://myflixandchill.herokuapp.com/users/${username}`, {
-            headers: { Authorization:`Bearer ${token}`}
-        })
-        .then(response => {
-            this.setState({
-                Username: response.data.Username,
-                Password: response.data.Password,
-                Email: response.data.Email,
-                Birthday: response.data.Birthday,
-                FavoriteMovies: response.data.FavoriteMovies
-                //Watchlist: response.data.Watchlist
-            });
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-    }
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+  }
 
     editUser = (e) => {
         e.preventDefault();
@@ -106,6 +106,26 @@ export class ProfileView extends React.Component {
         });
     }
 
+    onRemovefromWatchlist = (e, movie) => {
+      e.preventDefault();
+      const username = localStorage.getItem('user');
+      const token = localStorage.getItem('token');
+
+      axios.delete(`https://myflixandchill.herokuapp.com/users/${username}/watchlist/${movie._id}`,
+          {
+              headers: { Authorization: `Bearer ${token}` }
+          }
+      )
+      .then((response) => {
+          console.log(response);
+          alert("Movie removed");
+          this.componentDidMount();
+      })
+      .catch(function (error) {
+          console.log(error);
+      });
+  }
+
     onDeleteUser() {
         const Username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
@@ -150,7 +170,7 @@ export class ProfileView extends React.Component {
 
     render() {
         const { movies, onBackClick } = this.props;
-        const { FavoriteMovies, Username, Email, Birthday } = this.state;
+        const { Watchlist, FavoriteMovies, Username, Email, Birthday } = this.state;
 
         if (!Username) {
             return null;
@@ -230,7 +250,6 @@ export class ProfileView extends React.Component {
                     </Card>
                     </Col>
                 </Row>
-
                 <Row>
                     <Col>
                     <Card>
@@ -253,7 +272,7 @@ export class ProfileView extends React.Component {
                                                     <Card.Title className="movie-title">
                                                         {movie.Title}
                                                     </Card.Title>
-                                                    <Button value={movie._id} onClick={(e) => this.onRemoveFavorite(e, movie)}>Remove from List</Button>
+                                                    <Button value={movie._id} onClick={(e) => this.onRemoveFavorite(e, movie)}>Remove from favorite movies</Button>
                                                 </Card.Body>
                                             </Card>
                                         );
@@ -261,6 +280,39 @@ export class ProfileView extends React.Component {
                                 })}
                             </Row>
                         </Card.Body>
+                    </Card>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                    <Card>
+                        <Card.Body>
+                            {Watchlist.length === 0 && (
+                                <div className="text-center">No movie in watchlist</div>
+                            )}
+                            <Row className="watchlist-container">
+                                {Watchlist.length > 0 && movies.map((movie) => {
+                                    if (movie._id === Watchlist.find((fav) => fav === movie._id)
+                                    ) {
+                                        return (
+                                            <Card className="watchlist-movie" key={movie._id} >
+                                                <Card.Img
+                                                    className="watchlist-movie-image"
+                                                    variant="top"
+                                                    src={movie.ImagePath}
+                                                />
+                                                <Card.Body>
+                                                    <Card.Title className="movie-title">
+                                                        {movie.Title}
+                                                    </Card.Title>
+                                                    <Button value={movie._id} onClick={(e) => this.onRemovefromWatchlist(e, movie)}>Remove from watchlist</Button>
+                                                </Card.Body>
+                                            </Card>
+                                        );
+                                    }
+                                })}
+                            </Row>
+                            </Card.Body>
                     </Card>
                     </Col>
                 </Row>
