@@ -116,55 +116,6 @@
   font-weight: var(--fontweight-form-description);
 }
 :root {
-  --fontsize-card-title: 20px;
-  --fontsize-card-text: 15px;
-  --fontweight-card-title: 700;
-  --fontweight-card-text: 400;
-  --fontsize-card-button: 14px;
-  --fontweight-card-button: 400;
-}
-
-* {
-  box-sizing: border-box;
-  font-family: "Lato", sans-serif;
-}
-
-#card-button {
-  margin: auto;
-  color: #ffffff;
-}
-
-#movie-card {
-  text-align: center;
-  min-height: 500px;
-  margin-bottom: 50px;
-  border-color: #ffffff;
-  border-width: 2px;
-}
-
-#card-title {
-  font-size: var(--fontsize-card-title);
-  font-weight: var(--fontweight-card-title);
-  background-color: #121212;
-}
-
-#card-text {
-  font-size: var(--fontsize-card-text);
-  font-weight: var(--fontweight-card-text);
-  color: #bb86fc;
-  background-color: #121212;
-}
-
-#card-button {
-  font-size: var(--fontsize-card-button);
-  font-weight: var(--fontweight-card-button);
-  background-color: #121212;
-}
-
-.card-body {
-  background-color: #121212;
-}
-:root {
   --fontsize-movie-title: 28px;
   --fontweight-movie-title: 600;
   --fontsize-movie-description: 18px;
@@ -299,6 +250,55 @@
   color: #ffffff;
   font-size: 20px;
   font-weight: 600;
+}
+:root {
+  --fontsize-card-title: 20px;
+  --fontsize-card-text: 15px;
+  --fontweight-card-title: 700;
+  --fontweight-card-text: 400;
+  --fontsize-card-button: 14px;
+  --fontweight-card-button: 400;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+#card-button {
+  margin: auto;
+  color: #ffffff;
+}
+
+#movie-card {
+  text-align: center;
+  min-height: 500px;
+  margin-bottom: 50px;
+  border-color: #ffffff;
+  border-width: 2px;
+}
+
+#card-title {
+  font-size: var(--fontsize-card-title);
+  font-weight: var(--fontweight-card-title);
+  background-color: #121212;
+}
+
+#card-text {
+  font-size: var(--fontsize-card-text);
+  font-weight: var(--fontweight-card-text);
+  color: #bb86fc;
+  background-color: #121212;
+}
+
+#card-button {
+  font-size: var(--fontsize-card-button);
+  font-weight: var(--fontweight-card-button);
+  background-color: #121212;
+}
+
+.card-body {
+  background-color: #121212;
 }
 .my-flix {
   color: steelblue;
