@@ -33,3 +33,10 @@ can learn more about movies I’ve watched or am interested in.
 
 - Javascript
 - React
+- Redux
+- Parcel
+
+## Demo
+
+myFlix is deployed to netlify
+### <a href="https://myflixandchill.netlify.app/">LIVE DEMO</a>
