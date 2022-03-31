@@ -39,4 +39,4 @@ can learn more about movies I’ve watched or am interested in.
 ## Demo
 
 myFlix is deployed to netlify
-### <a href="https://myflixandchill.herokuapp.com/">LIVE DEMO</a>
+### <a href="https://myflixandchill.netlify.app/">LIVE DEMO</a>
